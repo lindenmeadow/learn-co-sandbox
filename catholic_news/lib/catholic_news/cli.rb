@@ -8,7 +8,7 @@ class CatholicNews::CLI
 		puts "Today's Headlines"
 		puts "_________________"
 		@stories = CatholicNews::News.todays_stories
-		@stories.each.with_index(1) do |story, i|
+		@stories.each.with_index(1) do |story, i, i++|
 			puts "#{i}. #{story.headline}"
 		end
 	end
@@ -30,10 +30,15 @@ class CatholicNews::CLI
 				  puts"#{story.link}"
 				elsif input == "headlines"
 				  list_headlines
-				else 
-					puts "Invalid entry. Please enter headlines, exit, or a number from the list of headlines."
+				elsif input == "exit"
+					finish
+				else
+				  puts "Invalid entry. Please enter headlines, exit, or a number from the list of headlines."
 				end
 		end
-		puts "Thanks for visiting! Check back tomorrow for more news!"
+	end
+	
+	def finish
+	  puts "Thanks for visiting! Check back tomorrow for more news!"
 	end
 end
